@@ -35,20 +35,43 @@ class StoryBrain {
         choice2: '')
   ];
 
+  void nextStory(int choiceNumber) {
+    if (choiceNumber == 1 && _storyNumber == 0) {
+      _storyNumber = 2;
+    } else if (choiceNumber == 2 && _storyNumber == 0) {
+      _storyNumber = 1;
+    } else if (choiceNumber == 1 && _storyNumber == 1) {
+      _storyNumber = 2;
+    } else if (choiceNumber == 2 && _storyNumber == 1) {
+      _storyNumber = 3;
+    } else if (choiceNumber == 1 && _storyNumber == 2) {
+      _storyNumber = 5;
+    } else if (choiceNumber == 2 && _storyNumber == 2) {
+      _storyNumber = 4;
+    } else if (_storyNumber == 3 || _storyNumber == 4 || _storyNumber == 5) {
+      restart();
+    }
+  }
+
+  void restart() {
+    _storyNumber = 0;
+  }
+
   // Getting the story text
   String getStory() {
     return _storyData[_storyNumber].storyTitle;
   }
 
   // getting choice one
-//  String getChoice1() {
-//    return _storyData[_storyNumber].choice1;
-//  }
+  String getChoice1() {
+    return _storyData[_storyNumber].choice1;
+  }
+
 //
 //  // getting choice 2
-//  String getChoice2() {
-//    return _storyData[_storyNumber].choice1;
-//  }
+  String getChoice2() {
+    return _storyData[_storyNumber].choice2;
+  }
 }
 //TODO: Step 23 - Use the storyNumber property inside
 // getStory(), getChoice1() and getChoice2() so
@@ -61,7 +84,6 @@ class StoryBrain {
 //TODO: Step 12 - Create a method called getChoice2() that returns the text for the first choice2 from _storyData.
 
 //TODO: Step 25 - Change the storyNumber property into a private property so that only story_brain.dart has access to it. You can do this by right clicking on the name (storyNumber) and selecting Refactor -> Rename to make the change across all the places where it's used.
-
 //TODO: Step 16 - Create a property called storyNumber which starts with a value of 0. This will be used to track which story the user is currently viewing.
 
 //TODO: Step 17 - Create a method called nextStory(), it should
